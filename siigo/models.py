@@ -10,6 +10,9 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
 
+    def __str__(self):
+        return self.first_name
+
 
 class AcInvoices(models.Model):
     class Meta:
@@ -24,12 +27,18 @@ class AcInvoices(models.Model):
     total_tax = models.IntegerField()
     total_value = models.IntegerField()
 
+    def __str__(self):
+        return self.doc_date
+
 
 class AcTenant(models.Model):
     class Meta:
         db_table = 'ac_tenant'
 
     name = models.CharField(max_length=45)
+
+    def __str__(self):
+        return self.name
 
 
 class AcInvoiceItems(models.Model):
@@ -42,6 +51,10 @@ class AcInvoiceItems(models.Model):
     unit_value = models.FloatField()
     item_value = models.FloatField()
 
+    def __str__(self):
+        return str(self.quantity)
+
+
 
 class AcProducts(models.Model):
     class Meta:
@@ -51,3 +64,6 @@ class AcProducts(models.Model):
     name = models.CharField(max_length=45)
     description = models.TextField()
     list_price = models.FloatField()
+
+    def __str__(self):
+        return self.name
