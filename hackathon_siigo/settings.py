@@ -50,7 +50,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'siigo.apps.SiigoConfig',
-    'api_rest.apps.ApiRestConfig'
+    'api_rest.apps.ApiRestConfig',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'hackathon_siigo.urls'
@@ -144,3 +146,7 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ORIGIN_REGEX_WHITELIST = (
 
 )
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
