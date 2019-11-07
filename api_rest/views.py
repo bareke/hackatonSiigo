@@ -1,9 +1,11 @@
+from chunkator import chunkator
 from rest_framework import status
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.generics import ListAPIView
 
 from siigo.models import AcInvoiceItems
 from siigo.models import AcInvoices
@@ -17,7 +19,7 @@ from .serializers import AcTenantSerializer
 from .serializers import CustomerSerializer
 
 from siigo.utils import generate_fake_data
-from siigo.utils import generate_fake_data_products
+from siigo.utils import populate_products
 
 # Create your views here.
 
@@ -53,7 +55,8 @@ class FakeData(APIView):
         number = int(json.get('number'))
         if number:
             generate_fake_data(number)
-            return JsonResponse(json, status=status.HTTP_200_OK)
+            content = {'successful data generation': 'fake data'}
+            return JsonResponse(content, status=status.HTTP_200_OK)
         content = {'please send number': 'nothing to see here'}
         return JsonResponse(content, status=status.HTTP_400_BAD_REQUEST)
 
@@ -63,7 +66,8 @@ class FakeDataProducts(APIView):
         json = JSONParser().parse(request)
         number = int(json.get('number'))
         if number:
-            generate_fake_data_products(number)
-            return JsonResponse(json, status=status.HTTP_200_OK)
+            populate_products(number)
+            content = {'successful data generation': 'fake data products'}
+            return JsonResponse(content, status=status.HTTP_200_OK)
         content = {'please send number': 'nothing to see here'}
         return JsonResponse(content, status=status.HTTP_400_BAD_REQUEST)
