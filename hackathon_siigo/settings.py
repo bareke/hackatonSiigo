@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'siigo.apps.SiigoConfig',
+    'predictive.apps.PredictiveConfig',
     'api_rest.apps.ApiRestConfig',
     'debug_toolbar',
 ]

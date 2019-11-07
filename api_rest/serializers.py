@@ -6,6 +6,21 @@ from siigo.models import AcProducts
 from siigo.models import AcTenant
 from siigo.models import Customer
 
+from predictive.models import Device
+from predictive.models import Search
+
+
+class DeviceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Device
+        fields = '__all__'
+
+
+class SearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Search
+        fields = '__all__'
+
 
 class AcInvoiceItemsSerializer(serializers.ModelSerializer):
     class Meta:

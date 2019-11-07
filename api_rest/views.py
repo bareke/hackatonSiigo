@@ -1,4 +1,3 @@
-from chunkator import chunkator
 from rest_framework import status
 from django.http import JsonResponse
 from rest_framework.views import APIView
@@ -18,10 +17,26 @@ from .serializers import AcProductsSerializer
 from .serializers import AcTenantSerializer
 from .serializers import CustomerSerializer
 
+from predictive.models import Device
+from predictive.models import Search
+from .serializers import DeviceSerializer
+from .serializers import SearchSerializer
+
 from siigo.utils import generate_fake_data
 from siigo.utils import populate_products
 
+
 # Create your views here.
+
+
+class DeviceView(ModelViewSet):
+    queryset = Device.objects.all()
+    serializer_class = DeviceSerializer
+
+
+class SearchView(ModelViewSet):
+    queryset = Search.objects.all()
+    serializer_class = SearchSerializer
 
 
 class AcInvoiceItemsView(ModelViewSet):

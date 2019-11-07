@@ -7,6 +7,8 @@ from .views import AcInvoicesView
 from .views import AcProductsView
 from .views import AcTenantView
 from .views import CustomerView
+from .views import DeviceView
+from .views import SearchView
 from .views import FakeData
 from .views import FakeDataProducts
 
@@ -16,6 +18,9 @@ router.register('ac-invoices', AcInvoicesView)
 router.register('ac-products', AcProductsView)
 router.register('ac-tenant', AcTenantView)
 router.register('customer', CustomerView)
+
+router.register('device', DeviceView)
+router.register('search', SearchView)
 
 
 urlpatterns = [
